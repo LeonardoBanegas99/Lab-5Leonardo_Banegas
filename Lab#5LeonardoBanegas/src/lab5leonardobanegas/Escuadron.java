@@ -7,14 +7,16 @@ public class Escuadron {
     private String nombre;
     private String localidad;
     private String lema;
-    private Object lider;
+    private Persona lider;
+    private String tipo;
     private ArrayList<Persona> miembros = new ArrayList();
 
-    public Escuadron(String nombre, String localidad, String lema, Object lider) {
+    public Escuadron(String nombre, String localidad, String lema, Persona lider, String tipo) {
         this.nombre = nombre;
         this.localidad = localidad;
         this.lema = lema;
         this.lider = lider;
+        this.tipo = tipo;
     }
 
     public Escuadron() {
@@ -44,11 +46,11 @@ public class Escuadron {
         this.lema = lema;
     }
 
-    public Object getLider() {
+    public Persona getLider() {
         return lider;
     }
 
-    public void setLider(Object lider) {
+    public void setLider(Persona lider) {
         this.lider = lider;
     }
 
@@ -64,6 +66,5 @@ public class Escuadron {
     public String toString() {
         return "Escuadron{" + "nombre=" + nombre + ", localidad=" + localidad + ", lema=" + lema + ", lider=" + lider + ", miembros=" + miembros + '}';
     }
-    
-    
+
 }
