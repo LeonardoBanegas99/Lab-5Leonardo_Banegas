@@ -8,7 +8,7 @@ public class Escuadron {
     private String localidad;
     private String lema;
     private Object lider;
-    private ArrayList miembros = new ArrayList();
+    private ArrayList<Persona> miembros = new ArrayList();
 
     public Escuadron(String nombre, String localidad, String lema, Object lider) {
         this.nombre = nombre;
