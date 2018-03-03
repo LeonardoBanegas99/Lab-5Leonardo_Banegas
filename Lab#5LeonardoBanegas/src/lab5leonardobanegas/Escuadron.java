@@ -54,14 +54,23 @@ public class Escuadron {
         this.lider = lider;
     }
 
-    public ArrayList getMiembros() {
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public ArrayList<Persona> getMiembros() {
         return miembros;
     }
 
-    public void setMiembros(ArrayList miembros) {
+    public void setMiembros(ArrayList<Persona> miembros) {
         this.miembros = miembros;
     }
 
+    
     @Override
     public String toString() {
         return "Escuadron{" + "nombre=" + nombre + ", localidad=" + localidad + ", lema=" + lema + ", lider=" + lider + ", miembros=" + miembros + '}';

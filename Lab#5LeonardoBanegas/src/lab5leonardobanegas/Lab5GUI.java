@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Lab5GUI extends javax.swing.JFrame {
 
@@ -81,15 +83,20 @@ public class Lab5GUI extends javax.swing.JFrame {
         rbVillano = new javax.swing.JRadioButton();
         btnGuardarEscuadron = new javax.swing.JButton();
         btnAgregarMiembro = new javax.swing.JButton();
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnRegresarescuadron = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        ListaMiembrosSuperHeroes = new javax.swing.JList<>();
+        listamiembros = new javax.swing.JList<>();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jScrollPane4 = new javax.swing.JScrollPane();
         ListaMiembrosVillanos = new javax.swing.JList<>();
+        FrameArbol = new javax.swing.JFrame();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTree1 = new javax.swing.JTree();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -404,6 +411,16 @@ public class Lab5GUI extends javax.swing.JFrame {
             }
         });
 
+        btnRegresarescuadron.setText("Regresar");
+        btnRegresarescuadron.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarescuadronMouseClicked(evt);
+            }
+        });
+
+        listamiembros.setModel(new DefaultListModel());
+        jScrollPane3.setViewportView(listamiembros);
+
         javax.swing.GroupLayout FrameCrearEscuadronLayout = new javax.swing.GroupLayout(FrameCrearEscuadron.getContentPane());
         FrameCrearEscuadron.getContentPane().setLayout(FrameCrearEscuadronLayout);
         FrameCrearEscuadronLayout.setHorizontalGroup(
@@ -429,20 +446,29 @@ public class Lab5GUI extends javax.swing.JFrame {
                         .addComponent(tfEscuadronLocalidad)
                         .addComponent(tfEscuadronLema)
                         .addComponent(cblider, 0, 276, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(69, 69, 69)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
             .addGroup(FrameCrearEscuadronLayout.createSequentialGroup()
                 .addGap(144, 144, 144)
                 .addComponent(btnGuardarEscuadron, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 197, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAgregarMiembro)
-                .addGap(141, 141, 141))
+                .addGap(121, 121, 121))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FrameCrearEscuadronLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnRegresarescuadron)
+                .addContainerGap())
         );
         FrameCrearEscuadronLayout.setVerticalGroup(
             FrameCrearEscuadronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FrameCrearEscuadronLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(FrameCrearEscuadronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnAgregarMiembro)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, FrameCrearEscuadronLayout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAgregarMiembro))
                     .addGroup(FrameCrearEscuadronLayout.createSequentialGroup()
                         .addGroup(FrameCrearEscuadronLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
@@ -466,14 +492,37 @@ public class Lab5GUI extends javax.swing.JFrame {
                             .addComponent(cblider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(75, 75, 75)
                         .addComponent(btnGuardarEscuadron, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addComponent(btnRegresarescuadron)
+                .addGap(72, 72, 72))
         );
-
-        ListaMiembrosSuperHeroes.setModel(new DefaultListModel());
-        jScrollPane3.setViewportView(ListaMiembrosSuperHeroes);
 
         ListaMiembrosVillanos.setModel(new DefaultListModel());
         jScrollPane4.setViewportView(ListaMiembrosVillanos);
+
+        FrameArbol.setPreferredSize(new java.awt.Dimension(800, 600));
+        FrameArbol.setSize(new java.awt.Dimension(800, 600));
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Power Squad");
+        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane5.setViewportView(jTree1);
+
+        javax.swing.GroupLayout FrameArbolLayout = new javax.swing.GroupLayout(FrameArbol.getContentPane());
+        FrameArbol.getContentPane().setLayout(FrameArbolLayout);
+        FrameArbolLayout.setHorizontalGroup(
+            FrameArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameArbolLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(355, Short.MAX_VALUE))
+        );
+        FrameArbolLayout.setVerticalGroup(
+            FrameArbolLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FrameArbolLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 497, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
@@ -486,7 +535,7 @@ public class Lab5GUI extends javax.swing.JFrame {
                 jButton1MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, -1, 60));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, 60));
 
         jButton2.setText("Crear Superheroes");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -494,7 +543,7 @@ public class Lab5GUI extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 230, 60));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 230, 60));
 
         jButton3.setText("Crear Villanos");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -502,7 +551,7 @@ public class Lab5GUI extends javax.swing.JFrame {
                 jButton3MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 230, 60));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 230, 60));
 
         jButton4.setText("Crear Escuadron");
         jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -510,7 +559,20 @@ public class Lab5GUI extends javax.swing.JFrame {
                 jButton4MouseClicked(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 380, 230, 70));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 230, 70));
+
+        jButton5.setText("Arbol");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 230, 70));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bvs2.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-530, 0, 1330, 600));
@@ -752,38 +814,53 @@ public class Lab5GUI extends javax.swing.JFrame {
         String tipo = "";
         if (rbSuperHeroe.isSelected()) {
             tipo = "SuperHeroe";
-            DefaultListModel modelo = (DefaultListModel) ListaMiembrosSuperHeroes.getModel();
+
+        } else if (rbVillano.isSelected()) {
+            tipo = "Villanos";
+        }
+        ArrayList<String> tipos = new ArrayList();
+        tipos.add(tipo);
+        if (tipos.get(tipos.size() - 1).equalsIgnoreCase("superheroe")) {
+            DefaultListModel m = new DefaultListModel();
+            DefaultListModel modelo = m;
             DefaultListModel modelo2 = (DefaultListModel) ListaSuperheroes.getModel();
             for (int i = 0; i < modelo2.size(); i++) {
                 modelo.addElement(modelo2.get(i));
             }
-            ListaMiembrosSuperHeroes.setModel(modelo);
+            listamiembros.setModel(modelo);
             jScrollPane3.setBounds(500, 50, 150, 300);
             FrameCrearEscuadron.add(jScrollPane3);
-        } else if (rbVillano.isSelected()) {
-            tipo = "Villanos";
-            DefaultListModel modelo = (DefaultListModel) ListaMiembrosVillanos.getModel();
+        } else if (tipos.get(tipos.size() - 1).equalsIgnoreCase("villanos")) {
+            DefaultListModel m = new DefaultListModel();
+            DefaultListModel modelo = m;
             DefaultListModel modelo2 = (DefaultListModel) ListaVillanos.getModel();
             for (int i = 0; i < modelo2.size(); i++) {
                 modelo.addElement(modelo2.get(i));
             }
-            ListaMiembrosVillanos.setModel(modelo);
-            jScrollPane4.setBounds(500, 50, 150, 300);
-            FrameCrearEscuadron.add(jScrollPane4);
+            listamiembros.setModel(modelo);
+            jScrollPane3.setBounds(500, 50, 150, 300);
+            FrameCrearEscuadron.add(jScrollPane3);
         }
         escuadrones.add(new Escuadron(nombre, localidad, lema, lider, tipo));
+        tfEscuadronnombre.setText("");
+        tfEscuadronLocalidad.setText("");
+        tfEscuadronLema.setText("");
     }//GEN-LAST:event_btnGuardarEscuadronMouseClicked
 
     private void btnAgregarMiembroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMiembroMouseClicked
-        if (rbSuperHeroe.isSelected()) {
-            int n = ListaMiembrosSuperHeroes.getSelectedIndex();
-            DefaultListModel modelo = (DefaultListModel) ListaMiembrosSuperHeroes.getModel();
-            (escuadrones.get(escuadrones.size() - 1)).getMiembros().add(modelo.get(n));
+        if (escuadrones.get(escuadrones.size() - 1).getLider() instanceof Superheroes) {
+            int n = listamiembros.getSelectedIndex();
+            System.out.println("selec " + n);
+            System.out.println("size" + escuadrones.size());
+            DefaultListModel m2 = (DefaultListModel) listamiembros.getModel();
+            (escuadrones.get(escuadrones.size() - 1)).getMiembros().add((Persona) (m2.get(n)));
 
-        } else {
-            int n = ListaMiembrosVillanos.getSelectedIndex();
-            DefaultListModel modelo = (DefaultListModel) ListaMiembrosVillanos.getModel();
-            (escuadrones.get(escuadrones.size() - 1)).getMiembros().add(modelo.get(n));
+        } else if (escuadrones.get(escuadrones.size() - 1).getLider() instanceof Villanos) {
+            int n = listamiembros.getSelectedIndex();
+            System.out.println("selec " + n);
+            System.out.println("size" + escuadrones.size());
+            DefaultListModel m2 = (DefaultListModel) listamiembros.getModel();
+            (escuadrones.get(escuadrones.size() - 1)).getMiembros().add((Persona) (m2.get(n)));
         }
         System.out.println(escuadrones.get(escuadrones.size() - 1).getMiembros());
     }//GEN-LAST:event_btnAgregarMiembroMouseClicked
@@ -791,6 +868,65 @@ public class Lab5GUI extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        this.setVisible(false);
+        FrameArbol.setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void btnRegresarescuadronMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegresarescuadronMouseClicked
+        FrameCrearEscuadron.setVisible(false);
+        this.setVisible(true);
+
+    }//GEN-LAST:event_btnRegresarescuadronMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        DefaultTreeModel modeloArbol = (DefaultTreeModel) jTree1.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+        DefaultListModel modeloheroes = (DefaultListModel) listamiembros.getModel();
+        for (int i = 0; i < escuadrones.size(); i++) {
+            /*if (raiz.getChildAt(i).toString().equals("Escuadron " + escuadrones.get(i).getTipo())) {
+                if (escuadrones.get(i).getLider() instanceof Superheroes) {
+                    for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++) {
+                        DefaultMutableTreeNode t = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getNombre());
+                        DefaultMutableTreeNode q = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getPoder());
+                        t.add(q);
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(t);
+                    }
+
+                } else if (escuadrones.get(i).getLider() instanceof Villanos) {
+                    for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++) {
+                        DefaultMutableTreeNode t = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getNombre());
+                        DefaultMutableTreeNode q = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getDebilidad());
+                        t.add(q);
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(t);
+                    }
+                }
+            } else {*/
+            if (escuadrones.get(i).getLider() instanceof Superheroes) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode("Escuadron " + escuadrones.get(i).getTipo());
+                for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++) {
+                    DefaultMutableTreeNode t = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getNombre());
+                    DefaultMutableTreeNode q = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getPoder());
+                    t.add(q);
+                    p.add(t);
+                    raiz.add(p);
+                }
+
+            } else if (escuadrones.get(i).getLider() instanceof Villanos) {
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode("Escuadron " + escuadrones.get(i).getTipo());
+                for (int j = 0; j < escuadrones.get(i).getMiembros().size(); j++) {
+                    DefaultMutableTreeNode t = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getNombre());
+                    DefaultMutableTreeNode q = new DefaultMutableTreeNode(escuadrones.get(i).getMiembros().get(j).getDebilidad());
+                    t.add(q);
+                    p.add(t);
+                    raiz.add(p);
+                }
+            }
+        }
+
+        modeloArbol.reload();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -825,11 +961,11 @@ public class Lab5GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem EliminarSuperheroe;
     private javax.swing.JMenuItem EliminarVillano;
+    private javax.swing.JFrame FrameArbol;
     private javax.swing.JFrame FrameCrearEscuadron;
     private javax.swing.JFrame FrameCrearSuperheroes;
     private javax.swing.JFrame FrameCrearVillanos;
     private javax.swing.JFrame FrameListas;
-    private javax.swing.JList<String> ListaMiembrosSuperHeroes;
     private javax.swing.JList<String> ListaMiembrosVillanos;
     private javax.swing.JList<String> ListaSuperheroes;
     private javax.swing.JList<String> ListaVillanos;
@@ -839,6 +975,7 @@ public class Lab5GUI extends javax.swing.JFrame {
     private javax.swing.JPopupMenu PUMVillanos;
     private javax.swing.JButton btnAgregarMiembro;
     private javax.swing.JButton btnGuardarEscuadron;
+    private javax.swing.JButton btnRegresarescuadron;
     private javax.swing.JButton btncrearSuperheroe;
     private javax.swing.JButton btncrearVillano;
     private javax.swing.JButton btnregresarLista;
@@ -850,6 +987,7 @@ public class Lab5GUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -879,8 +1017,11 @@ public class Lab5GUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JTree jTree1;
+    private javax.swing.JList<String> listamiembros;
     private javax.swing.JRadioButton rbSuperHeroe;
     private javax.swing.JRadioButton rbVillano;
     private javax.swing.JTextField tfEscuadronLema;
